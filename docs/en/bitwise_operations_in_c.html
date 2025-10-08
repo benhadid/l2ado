@@ -230,7 +230,7 @@
 </tbody>
 </table>
 
-<p>In C language, the tilda character <strong><code class="language-plaintext highlighter-rouge">~</code></strong> is used to represent the <strong>NOT</strong> operator. It acts on each bit of the value. Example :</p>
+<p>In C, the tilda character <strong><code class="language-plaintext highlighter-rouge">~</code></strong> is used to represent the <strong>NOT</strong> operator. It acts on each bit of the value. Example :</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">uint16_t</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="cm">/* &lt;=&gt; a = 0b0000000000000001; */</span>
    <span class="kt">uint16_t</span> <span class="n">b</span> <span class="o">=</span> <span class="o">~</span><span class="n">a</span><span class="p">;</span> <span class="cm">/* &lt;=&gt; b = 0b1111111111111110; */</span>
@@ -281,7 +281,7 @@
 </tbody>
 </table>
 
-<p>In C language, the symbol <strong><code class="language-plaintext highlighter-rouge">&amp;</code></strong> represents the <strong>AND</strong> operator and acts on <em>each</em> bit of the operands. Example:</p>
+<p>In C, the symbol <strong><code class="language-plaintext highlighter-rouge">&amp;</code></strong> represents the <strong>AND</strong> operator and acts on <em>each</em> bit of the operands. Example:</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">uint16_t</span> <span class="n">a</span> <span class="o">=</span> <span class="mh">0xF0F0</span><span class="p">;</span> <span class="cm">/* &lt;=&gt; a = 0b1111000011110000; */</span>
    <span class="kt">uint16_t</span> <span class="n">b</span> <span class="o">=</span> <span class="mh">0x00FF</span><span class="p">;</span> <span class="cm">/* &lt;=&gt; b = 0b0000000011111111; */</span>
@@ -401,7 +401,7 @@
 
 <p>This operator allows to shift a given operand <code class="language-plaintext highlighter-rouge">op_1</code> by a certain number of bits <strong>to the right</strong> (the amount of shift is specified by <code class="language-plaintext highlighter-rouge">op_2</code>). The low-order bits of the operand <code class="language-plaintext highlighter-rouge">op_1</code> are lost, and the high-order bits are replaced by zeros.</p>
 
-<p>In C language, a combination of two right-facing angle brackets <strong><code class="language-plaintext highlighter-rouge">&gt;&gt;</code></strong> implements the <strong>SHR</strong> operator. Example:</p>
+<p>In C, a combination of two right-facing angle brackets <strong><code class="language-plaintext highlighter-rouge">&gt;&gt;</code></strong> implements the <strong>SHR</strong> operator. Example:</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">uint16_t</span> <span class="n">a</span> <span class="o">=</span> <span class="mh">0xF0F0</span><span class="p">;</span> <span class="cm">/* &lt;=&gt; a = 0b1111000011110000; */</span>
    <span class="kt">uint16_t</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>      <span class="cm">/* &lt;=&gt; b = 0b0000000000000010; */</span>
@@ -416,7 +416,7 @@
 
 <p>This operator allows to shift a given operand <code class="language-plaintext highlighter-rouge">op_1</code> by a certain number of bits <strong>to the left</strong> (the amount of shift is specified by <code class="language-plaintext highlighter-rouge">op_2</code>). The most significant bits of the operand <code class="language-plaintext highlighter-rouge">op_1</code> are lost, and the least significant bits are replaced by zeros.</p>
 
-<p>In C language, a combination of two left-facing angle brackets <strong><code class="language-plaintext highlighter-rouge">&lt;&lt;</code></strong> represents the <strong>SHL</strong> operator. Example:</p>
+<p>In C, a combination of two left-facing angle brackets <strong><code class="language-plaintext highlighter-rouge">&lt;&lt;</code></strong> represents the <strong>SHL</strong> operator. Example:</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">uint16_t</span> <span class="n">a</span> <span class="o">=</span> <span class="mh">0xF0F0</span><span class="p">;</span> <span class="cm">/* &lt;=&gt; a = 0b1111000011110000; */</span>
    <span class="kt">uint16_t</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>      <span class="cm">/* &lt;=&gt; b = 0b0000000000000010; */</span>
