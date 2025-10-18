@@ -234,7 +234,8 @@
 
 <p>If your OS (i.e. the VM) gives you a warning about “cmake” unknown/not installed, you need in this case to install “cmake” before continuing with the lab. Please type:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>cmake
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt update
+<span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>cmake
 </code></pre></div></div>
 
 <p>When prompted for the password, just enter: “user” (without the quotes). The typed password will not show on the screen. Then redo the last two steps mentioned above (i.e. executing <code class="language-plaintext highlighter-rouge">cmake ..</code> then <code class="language-plaintext highlighter-rouge">make</code>).</p>
