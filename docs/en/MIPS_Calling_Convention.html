@@ -269,13 +269,13 @@
 
   ```mips
   islower:
-     blt $a0, 'a', sinon   # branche si $a0 < 'a' 
-     bgt $a0, 'z', sinon   # branche si $a0 > 'z' 
+     blt $a0, 'a', sinon   # branch if $a0 < 'a' 
+     bgt $a0, 'z', sinon   # branch if $a0 > 'z' 
      li $v0, 1             # $v0 = 1
-     jr	 $ra               # retour à l’appelant 
+     jr	 $ra               # return to caller  
   sinon:
      li $v0, 0             # $v0 = 0
-     jr $ra                # retour à l’appelant
+     jr $ra                # return to caller
   ```
 
 </td>
