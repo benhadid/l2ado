@@ -226,9 +226,9 @@
 <p>To check whether your implementations are correct, configure then compile the programs with the following commands (under UN*X environment):</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>path/to/the/directory/lab3
-<span class="nv">$ </span><span class="nb">mkdir </span>build  <span class="c"># three configuration </span>
-<span class="nv">$ </span><span class="nb">cd </span>build     <span class="c"># steps to do the </span>
-<span class="nv">$ </span>cmake ..     <span class="c"># first time only</span>
+<span class="nv">$ </span><span class="nb">mkdir </span>build  <span class="c"># create a directory called build </span>
+<span class="nv">$ </span><span class="nb">cd </span>build     <span class="c"># get into this directory </span>
+<span class="nv">$ </span>cmake ..     <span class="c"># run cmake (don't forger  '..'! )</span>
 <span class="nv">$ </span>make         <span class="c"># &lt;- compile the programs - run this command every time you modify your ".c" files</span>
 </code></pre></div></div>
 
@@ -238,16 +238,16 @@
 <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>cmake
 </code></pre></div></div>
 
-<p>When prompted for the password, just enter: “user” (without the quotes). The typed password will not show on the screen. Then redo the last two steps mentioned above (i.e. executing <code class="language-plaintext highlighter-rouge">cmake ..</code> then <code class="language-plaintext highlighter-rouge">make</code>).</p>
+<p>When prompted for the password, just enter: “user” (without the quotes). When typing the password, it will not show on the screen. Then redo the last two steps once cmake has been installed (i.e. run <code class="language-plaintext highlighter-rouge">cmake ..</code> then <code class="language-plaintext highlighter-rouge">make</code>).</p>
 
-<p>If the compilation process goes without errors, you can run the validation tests for the exercises using the command</p>
+<p>If compiling produces no syntax errors, you can run the tests for the exercises as foolows</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ctest <span class="nt">--output-on-failure</span>  <span class="c"># &lt;- test your programs - run this command after every "successful" make</span>
 </code></pre></div></div>
 
 <p>This command will display on your screen the results of some tests which will allow you to check if you have correctly implemented the assigned tasks.</p>
 
-<p><strong>Hint</strong>: Write your solution in a standard way (i.e. with the keywords <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>, …), then you can convert it into an unstructured code (without these keywords) using the examples and indications given in the document “<a href="/l2ado/docs/en/non_structured_programming"> Structured and Unstructured Programming</a>”.</p>
+<p><strong>Hint</strong>: Write your solution in a standard way (i.e. with the keywords <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>, …), then you can convert it into an unstructured code (i.e. without using these keywords) by following the examples and indications given in the document “<a href="/l2ado/docs/en/non_structured_programming"> Structured and Unstructured Programming</a>”.</p>
 
 <h1 id="exercise-1-sum-of-squares">Exercise 1: (Sum of squares)</h1>
 
