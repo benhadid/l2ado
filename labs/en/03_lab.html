@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title> Unstructured programming - Computer Design / Fall 2026 </title>
-  <meta name="description" content="Objectives  Learn “ Structured and Unstructured Programming”PreambleAnyone who wishes to learn scuba diving starts by practicing the basics of this technique...">
+  <meta name="description" content="Objectives  Learn “ Structured and Unstructured Programming”PreambleSetupBegin by downloading the starter file for this lab and unzip its content to a folder...">
   
   <!--for gitlab pages -->
   
@@ -218,38 +218,32 @@
 </ul>
 
 <h1 id="preamble">Preamble</h1>
-
-<p>Anyone who wishes to learn scuba diving starts by practicing the basics of this technique in a swimming pool! Similarly, before we <em>dive</em> into “Assembly Programming”, something that scares many students, the following exercises teach you how to write programs in the C language, albeit with a twist: Technically, the required coding is still to be done in the C language, but the “structure” of your codes will be much like assembly programming.</p>
-
-<p>Begin by downloading the starter file for this lab and unzip its content to a folder of your choice. In this lab, you are asked to write programs in the C language with the following constraints: No <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>, <code class="language-plaintext highlighter-rouge">do</code>, <code class="language-plaintext highlighter-rouge">switch</code> or <code class="language-plaintext highlighter-rouge">else</code> keyword can be used in your codes.</p>
-
-<p>To check whether your implementations are correct, configure then compile the programs with the following commands (under UN*X environment):</p>
+<h2 id="setup">Setup</h2>
+<p>Begin by downloading the starter file for this lab and unzip its content to a folder of your choice. Then, execute the following instructions in a terminal:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>path/to/the/directory/lab3
-<span class="nv">$ </span><span class="nb">mkdir </span>build  <span class="c"># create a directory called build </span>
-<span class="nv">$ </span><span class="nb">cd </span>build     <span class="c"># get into this directory </span>
-<span class="nv">$ </span>cmake ..     <span class="c"># run cmake (don't forget the ending '..'! )</span>
-<span class="nv">$ </span>make         <span class="c"># &lt;- compile the programs - run this command every time you modify your ".c" files</span>
+.../lab3<span class="nv">$ </span><span class="nb">mkdir </span>build        <span class="c"># create a directory called build </span>
+.../lab3<span class="nv">$ </span><span class="nb">cd </span>build           <span class="c"># get into this directory </span>
+.../lab3/build<span class="nv">$ </span>cmake ..     <span class="c"># run cmake (don't forget the ending '..'! )</span>
 </code></pre></div></div>
 
-<p>If your OS (i.e. the VM) gives you a warning about “cmake” unknown/not installed, you need in this case to install “cmake” before continuing with the lab. Please type:</p>
+<p>If your OS gives you a warning about “cmake” unknown/not installed, you need in this case to install “cmake” before continuing with the lab. If you’re using the virtual machine (VM) “<strong>cvlab.ova</strong>” set for this course, enter the follwing commands:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt update
 <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>cmake
 </code></pre></div></div>
 
-<p>When prompted for the password, just enter: “user” (without the quotes). When typing the password, it will not show on the screen. Then redo the last two steps once cmake has been installed (i.e. run <code class="language-plaintext highlighter-rouge">cmake ..</code> then <code class="language-plaintext highlighter-rouge">make</code>).</p>
+<p>When prompted for the password, enter: “user” (without the quotes). The password will not show on the screen when you type it. Once cmake is installed, run <code class="language-plaintext highlighter-rouge">cmake ..</code> again.</p>
 
-<p>If compiling produces no syntax errors, you can run the tests for the exercises as foolows</p>
+<h2 id="description">Description</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ctest <span class="nt">--output-on-failure</span>  <span class="c"># &lt;- test your programs - run this command after every "successful" make</span>
-</code></pre></div></div>
+<p>Anyone who wishes to learn scuba diving starts by practicing the basics of this technique in a swimming pool! Similarly, before we <em>dive</em> into “Assembly Programming”, something that scares many students, the following exercises teach you how to write programs in the C language, albeit with a twist: Technically, the required coding is still to be done in the C language, but the “structure” of your codes will be much like assembly programming.</p>
 
-<p>This command will display on your screen the results of some tests which will allow you to check if you have correctly implemented the assigned tasks.</p>
-
-<p><strong>Hint</strong>: Write your code in a standard way (i.e. using with the keywords <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>, …), then convert it into an unstructured program (v. “<a href="/l2ado/docs/en/non_structured_programming">Structured and Unstructured Programming</a>”)</p>
+<p>In this lab, you are asked to write programs in the C language with the following constraints: No <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>, <code class="language-plaintext highlighter-rouge">do</code>, <code class="language-plaintext highlighter-rouge">switch</code> or <code class="language-plaintext highlighter-rouge">else</code> keyword can be used in your codes Those keywords do not exist in assembly languages and for beginners, stepping away from familiar control flow constructs like if/else conditionals and for/while loops can feel deeply daunting. <strong>Hint</strong>: Write your code in a standard way (i.e. using the keywords <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">while</code>, …), then convert it into an unstructured program (v. “<a href="/l2ado/docs/en/non_structured_programming">Structured and Unstructured Programming</a>”)</p>
 
 <h1 id="exercise-1-sum-of-squares">Exercise 1: (Sum of squares)</h1>
+
+<p><strong><em>prohibited keywords</em>: for, while, do, switch, else</strong></p>
 
 <p>In mathematics, the sum of the squares of <em>N</em> integers is described with the following equation:</p>
 
@@ -257,20 +251,27 @@
 
 <p>where \(n_0, n_1, ..., n_{N-1}\) are integers.</p>
 
-<p>Write the body of the function <code class="language-plaintext highlighter-rouge">SumOfSquares(int count, const int *tab)</code> in the file <code class="language-plaintext highlighter-rouge">src/SumOfSquares.c</code>. 
+<p>Write the body of the function <code class="language-plaintext highlighter-rouge">SumOfSquares(int count, const int *tab)</code> in the file <code class="language-plaintext highlighter-rouge">lab3/src/SumOfSquares.c</code>. 
 This function returns the sum of the squares of <code class="language-plaintext highlighter-rouge">count</code> integers stored in the array referenced by the pointer <code class="language-plaintext highlighter-rouge">tab</code>.</p>
 
-<p><strong>Constraints on the code:</strong></p>
-<ul>
-  <li><strong><em>prohibited keywords</em>: for, while, do, switch, else</strong></li>
-  <li>
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># vvv constraint checking test vvv</span>
-lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</span><span class="o">=</span>SumOfSquares.c <span class="nt">--for</span> <span class="nt">--while</span> <span class="nt">--switch</span> <span class="nt">--else</span> <span class="nt">--ternary</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
+<p>To compile, use the following command (under UN*X environment):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/build<span class="nv">$ </span>make SumOfSquaresTests    <span class="c"># &lt;- compiles the program - run this command every time you modify your ".c" file</span>
+</code></pre></div></div>
+
+<p>If compiling produces no syntax errors, you can check if your implementation runs correctly as follows</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/build<span class="nv">$ </span>ctest <span class="nt">-R</span> SumOfSquaresTests <span class="nt">--rerun-failed</span> <span class="nt">--output-on-failure</span>   <span class="c"># &lt;- test your program - run this command after every "successful" make</span>
+</code></pre></div></div>
+
+<p>Finally, to check if your <ins>working solution</ins> does not use the <strong>prohibited keywords</strong>, run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</span><span class="o">=</span>SumOfSquares.c <span class="nt">--for</span> <span class="nt">--while</span> <span class="nt">--switch</span> <span class="nt">--else</span> <span class="nt">--ternary</span>
+</code></pre></div></div>
 
 <h1 id="exercise-2--strcmp">Exercise 2 : (StrCmp)</h1>
+
+<p><strong><em>prohibited keywords</em>: for, while, do, switch, else</strong></p>
 
 <p>In the standard C language library, the <code class="language-plaintext highlighter-rouge">strcmp()</code> function (see <code class="language-plaintext highlighter-rouge">man 3 strcmp</code>) compares, character by character, two strings in memory to establish which character string comes first in standard lexicographic order, i.e. based on the ASCII values ​​of the characters. Here are some examples :</p>
 
@@ -284,21 +285,26 @@ lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</s
 
 <p>Write the body of the function <code class="language-plaintext highlighter-rouge">StrCmp(char *s1, char *s2)</code> in the file <code class="language-plaintext highlighter-rouge">src/StrCmp.c</code>. This function compares two character strings.</p>
 
-<p>The arguments <code class="language-plaintext highlighter-rouge">s1</code> and <code class="language-plaintext highlighter-rouge">s2</code> hold the addresses in memory of the two strings to compare. The memory address of the beginning of the first string is in <code class="language-plaintext highlighter-rouge">s1</code>, and the memory address of the start of the second string is in <code class="language-plaintext highlighter-rouge">s2</code>. If the first string is greater than the second, return a positive number. If the second string is larger, return a negative number. If the strings are equal, return the value 0.</p>
+<p>The arguments <code class="language-plaintext highlighter-rouge">s1</code> and <code class="language-plaintext highlighter-rouge">s2</code> hold the addresses in memory of the two strings to compare. The memory address of the beginning of the first string is in <code class="language-plaintext highlighter-rouge">s1</code>, and the memory address of the start of the second string is in <code class="language-plaintext highlighter-rouge">s2</code>. If the first string is greater than the second, return a positive number. If the second string is larger, return a negative number. If the strings are equal, return the value 0. <strong>Hint:</strong> code for every possible case, even when NULL strings are given!</p>
 
-<p><strong>Hint:</strong> code for every possible case, even when NULL strings are supplied!</p>
+<p>To compile, use the following command (under UN*X environment):</p>
 
-<p><strong>Constraints on the code:</strong></p>
-<ul>
-  <li><strong><em>prohibited keywords</em>: for, while, do, switch, else</strong></li>
-  <li>
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># vvv constraint checking test vvv</span>
-lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</span><span class="o">=</span>StrCmp.c <span class="nt">--for</span> <span class="nt">--while</span> <span class="nt">--switch</span> <span class="nt">--else</span> <span class="nt">--ternary</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/build<span class="nv">$ </span>make StrCmpTests    <span class="c"># &lt;- compiles the program - run this command every time you modify your ".c" file</span>
+</code></pre></div></div>
+
+<p>If compiling produces no syntax errors, you can check if your implementation runs correctly as follows</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/build<span class="nv">$ </span>ctest <span class="nt">-R</span> StrCmpTests <span class="nt">--rerun-failed</span> <span class="nt">--output-on-failure</span>   <span class="c"># &lt;- test your program - run this command after every "successful" make</span>
+</code></pre></div></div>
+
+<p>Finally, to check if your <ins>working solution</ins> does not use the <strong>prohibited keywords</strong>, run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</span><span class="o">=</span>StrCmp.c <span class="nt">--for</span> <span class="nt">--while</span> <span class="nt">--switch</span> <span class="nt">--else</span> <span class="nt">--ternary</span>
+</code></pre></div></div>
 
 <h1 id="exercise-3-calculator">Exercise 3: (Calculator)</h1>
+
+<p><strong><em>prohibited keywords</em>: for, while, do, switch, else</strong></p>
 
 <p>Write the body of the function <code class="language-plaintext highlighter-rouge">calculator(float nbr1, float nbr2, char op)</code> in the file <code class="language-plaintext highlighter-rouge">src/calc.c</code>.
 This function  returns the result of the operation <code class="language-plaintext highlighter-rouge">nbr1 op nbr2</code>, where <code class="language-plaintext highlighter-rouge">nbr1</code> and <code class="language-plaintext highlighter-rouge">nbr2 </code> are two numbers (of type <code class="language-plaintext highlighter-rouge">float</code>), and <code class="language-plaintext highlighter-rouge">op</code> is a character indicating the type of operation:</p>
@@ -310,17 +316,24 @@ This function  returns the result of the operation <code class="language-plainte
 
 <p>if <code class="language-plaintext highlighter-rouge">op</code> is different from the four operations indicated above then the function must return the value <code class="language-plaintext highlighter-rouge">NAN</code> (cf. <code class="language-plaintext highlighter-rouge">man 3 nan</code>).</p>
 
-<p><strong>Constraints on the code:</strong></p>
-<ul>
-  <li><strong><em>prohibited keywords</em>: for, while, do, switch, else</strong></li>
-  <li>
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># vvv constraint checking test vvv</span>
-lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</span><span class="o">=</span>calc.c <span class="nt">--for</span> <span class="nt">--while</span> <span class="nt">--switch</span> <span class="nt">--else</span> <span class="nt">--ternary</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
+<p>To compile, use the following command (under UN*X environment):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/build<span class="nv">$ </span>make CalcTests    <span class="c"># &lt;- compiles the program - run this command every time you modify your ".c" file</span>
+</code></pre></div></div>
+
+<p>If compiling produces no syntax errors, you can check if your implementation runs correctly as follows</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/build<span class="nv">$ </span>ctest <span class="nt">-R</span> CalcTests <span class="nt">--rerun-failed</span> <span class="nt">--output-on-failure</span>   <span class="c"># &lt;- test your program - run this command after every "successful" make</span>
+</code></pre></div></div>
+
+<p>Finally, to check if your <ins>working solution</ins> does not use the <strong>prohibited keywords</strong>, run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</span><span class="o">=</span>calc.c <span class="nt">--for</span> <span class="nt">--while</span> <span class="nt">--switch</span> <span class="nt">--else</span> <span class="nt">--ternary</span>
+</code></pre></div></div>
 
 <h1 id="exercise-4-atoi">Exercise 4: (AtoI)</h1>
+
+<p><strong><em>prohibited keywords</em>: for, while, do, switch, else</strong></p>
 
 <p>In the C language standard library, the <code class="language-plaintext highlighter-rouge">atoi(char *ptr)</code> function converts the character string pointed to by <code class="language-plaintext highlighter-rouge">ptr</code> into an integer value. For example, executing the function <code class="language-plaintext highlighter-rouge">atoi()</code> on the following character strings:</p>
 
@@ -334,16 +347,20 @@ lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</s
 
 <p>Unlike the standard <code class="language-plaintext highlighter-rouge">atoi()</code> function, you can limit yourself to character strings of the form <code class="language-plaintext highlighter-rouge">[-]14207...</code>. Note that the square brackets <code class="language-plaintext highlighter-rouge">[]</code> indicate the possibility of having an optional character for the minus sign character. They are not part of the character string!</p>
 
-<p><strong>Constraints on the code:</strong></p>
-<ul>
-  <li><strong><em>prohibited keywords</em>: for, while, do, switch, else</strong></li>
-  <li>
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># vvv constraint checking test vvv</span>
-lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</span><span class="o">=</span>AtoI.c <span class="nt">--for</span> <span class="nt">--while</span> <span class="nt">--switch</span> <span class="nt">--else</span> <span class="nt">--ternary</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
+<p>To compile, use the following command (under UN*X environment):</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/build<span class="nv">$ </span>make AtoITests    <span class="c"># &lt;- compiles the program - run this command every time you modify your ".c" file</span>
+</code></pre></div></div>
+
+<p>If compiling produces no syntax errors, you can check if your implementation runs correctly as follows</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/build<span class="nv">$ </span>ctest <span class="nt">-R</span> AtoITests <span class="nt">--rerun-failed</span> <span class="nt">--output-on-failure</span>   <span class="c"># &lt;- test your program - run this command after every "successful" make</span>
+</code></pre></div></div>
+
+<p>Finally, to check if your <ins>working solution</ins> does not use the <strong>prohibited keywords</strong>, run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../lab3/src<span class="nv">$ </span>python3 test.py <span class="nt">--filename</span><span class="o">=</span>AtoI.c <span class="nt">--for</span> <span class="nt">--while</span> <span class="nt">--switch</span> <span class="nt">--else</span> <span class="nt">--ternary</span>
+</code></pre></div></div>
 
   </article>
 
