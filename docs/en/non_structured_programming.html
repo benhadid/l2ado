@@ -397,7 +397,7 @@
     <p>Convert each <code class="language-plaintext highlighter-rouge">case i</code> statement into a unique label (ex: <code class="language-plaintext highlighter-rouge">case 5</code> will become <code class="language-plaintext highlighter-rouge">ESAC5</code>).</p>
   </li>
   <li>
-    <p>add a label at the end of the <code class="language-plaintext highlighter-rouge">switch/case</code> block (ex: <code class="language-plaintext highlighter-rouge">KAERB:</code>) and convert each <code class="language-plaintext highlighter-rouge">break</code> statement of the <code class="language-plaintext highlighter-rouge">switch</code> block to a <code class="language-plaintext highlighter-rouge">goto</code> statement to this new label (ex: <code class="language-plaintext highlighter-rouge">goto KAERB;</code>) in order to jump to the end of the end of the switch statement.</p>
+    <p>add a label at the end of the <code class="language-plaintext highlighter-rouge">switch/case</code> block (ex: <code class="language-plaintext highlighter-rouge">KAERB:</code>) and convert each <code class="language-plaintext highlighter-rouge">break</code> statement of the <code class="language-plaintext highlighter-rouge">switch</code> block to a <code class="language-plaintext highlighter-rouge">goto</code> statement to this new label (ex: <code class="language-plaintext highlighter-rouge">goto KAERB;</code>) in order to jump to the end of the switch statement.</p>
   </li>
   <li>
     <p>allocate an array before the <code class="language-plaintext highlighter-rouge">switch</code> statement with enough space to hold the valies of the <code class="language-plaintext highlighter-rouge">labels</code>defined in step 1 (i.e. labels ESAC0, ESAC1, …).</p>
