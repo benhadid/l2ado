@@ -400,7 +400,7 @@
     <p>add a label at the end of the <code class="language-plaintext highlighter-rouge">switch/case</code> block (ex: <code class="language-plaintext highlighter-rouge">KAERB:</code>) and convert each <code class="language-plaintext highlighter-rouge">break</code> statement of the <code class="language-plaintext highlighter-rouge">switch</code> block to a <code class="language-plaintext highlighter-rouge">goto</code> statement to this new label (ex: <code class="language-plaintext highlighter-rouge">goto KAERB;</code>) in order to jump to the end of the switch statement.</p>
   </li>
   <li>
-    <p>allocate an array before the <code class="language-plaintext highlighter-rouge">switch</code> statement with enough space to hold the valies of the <code class="language-plaintext highlighter-rouge">labels</code>defined in step 1 (i.e. labels ESAC0, ESAC1, …).</p>
+    <p>allocate an array before the <code class="language-plaintext highlighter-rouge">switch</code> statement with enough space to hold the values of the <code class="language-plaintext highlighter-rouge">labels</code>defined in step 1 (i.e. labels ESAC0, ESAC1, …).</p>
   </li>
   <li>
     <p>Finally, to convert the <code class="language-plaintext highlighter-rouge">switch</code> statement: We need first to <em>evaluate</em> the <code class="language-plaintext highlighter-rouge">expression</code> within  the <code class="language-plaintext highlighter-rouge">switch</code> statement which serves as an index to the array holding  the label values. We then make the appropriate jump with a <code class="language-plaintext highlighter-rouge">goto</code> instruction (see below).</p>
