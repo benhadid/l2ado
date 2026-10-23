@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title> The MIPS Assembly Language - Computer Design / Fall 2026 </title>
-  <meta name="description" content="IntroductionA sample program in MIPS assembly language is shown below# Title:# Author:# Date:# Description:# Input parameters:# Return data:#################...">
+  <meta name="description" content="IntroductionA sample program in the MIPS assembly language is shown below# Title:# Author:# Date:# Description:# Input parameters:# Return data:#############...">
   
   <!--for gitlab pages -->
   
@@ -169,7 +169,7 @@
   <article class="post-content">
     <h1 id="introduction">Introduction</h1>
 
-<p>A sample program in MIPS assembly language is shown below</p>
+<p>A sample program in the MIPS assembly language is shown below</p>
 
 <pre><code class="language-mips"># Title:
 # Author:
@@ -189,23 +189,23 @@ li $v0, 10
 syscall # system call to exit
 </code></pre>
 
-<p>There are three types of instructions that can be used in assembly language, where each instruction appears on a separate line:</p>
+<p>In assembly, each instruction must be on a separate line and can be any of the following types:</p>
 
 <ul>
-  <li><strong>Assembler Directives</strong>: These provide information to the <em>Assembler tool</em> for translating a program into machine code. Directives are used to define segments and allocate space in memory for global program variables. An assembler directive always begins with a period (.). A typical MIPS assembly language program uses the following directives:
+  <li><strong>Assembler Directives</strong>: These provide information to the <em>Assembler tool</em> for translating a program into machine code. Directives are used to define memory segments and allocate space for global variables. An assembler directive always begins with a period (.). A typical MIPS assembly language program uses the following directives:
     <ul>
-      <li><strong>.data</strong>: defines the data segment of the program, containing the global program variables.</li>
-      <li><strong>.text</strong>: defines the code segment of the program, containing the instructions to be executed.</li>
-      <li><strong>.globl</strong>: defines a symbol (label) as global that can be referenced from other files.</li>
+      <li><strong>.data</strong>: defines the data memory segment of the program, containing the global program variables.</li>
+      <li><strong>.text</strong>: defines the code memory segment of the program, containing the instructions to be executed.</li>
+      <li><strong>.globl</strong>: defines a symbol (i.e. label) as ‘global’ so that it can be referenced from other files.</li>
     </ul>
   </li>
   <li>
-    <p><strong>Executable Instructions</strong>: These generate machine code that will be executed by the processor. The instructions tell the processor what to do.</p>
+    <p><strong>Executable Instructions</strong>: These are the asssembly instructions converted to machine code. I.e. The instructions that tell the processor what to do.</p>
   </li>
-  <li><strong>Pseudo Instructions and Macros</strong>: Translated by the <em>Assembler tool</em> into actual instructions. These pseudo-instructions simplify the coding task.</li>
+  <li><strong>Pseudo Instructions and Macros</strong>: Translated by the <em>Assembler tool</em> into actual “hardware” instructions. The « pseudo-instructions » are not part of the ISA (i.e. do not have associated machine code), they are here to simplify the coding task.</li>
 </ul>
 
-<p>Additionally, comments can be inserted into the code. Comments are very important to programmers, but ignored by the <em>Assembler tool</em>. In MIPS, a comment begins with the symbol <code class="language-plaintext highlighter-rouge">#</code> and ends at the end of the line. Comments can appear at the beginning of a line or after an instruction. They explain the purpose of the program, when it was written, revised, and by whom. They explain the data and registers used in the program, the inputs, outputs, the sequence of instructions, and the algorithms implemented.</p>
+<p>Additionally, comments can be inserted into the code. Comments are very important to programmers, but ignored by the <em>Assembler tool</em>. In MIPS, a comment begins with the symbol <code class="language-plaintext highlighter-rouge">#</code> and ends at the end of the line. Comments can appear at the beginning of a line or after an instruction. They explain the purpose of the program, when it was written, or revised, and by whom. They explain the data and registers used in the program, the inputs, the outputs, the sequence of instructions, and the algorithms implemented.</p>
 
 <h1 id="the-edit-assemble-link-execute-cycle">The Edit-Assemble-Link-Execute Cycle</h1>
 
@@ -220,7 +220,7 @@ syscall # system call to exit
   </li>
 </ol>
 
-<p>It is typical that the first executable version of your program would have some <strong>runtime errors</strong>. These errors are not detectable by the <em>Assembler tool</em>, but occur when you run your program (e.g. your program may produce wrong results). Therefore, you should <em>debug</em> your program to identify errors at runtime. In this sense, you should run your program with different input values ​​and different operating situations to make sure it runs correctly. In essence, writing a program, whether in assembly or any other language, will require going through a cycle of edit-assemble-link-execute until all errors are ironed out and the correct results are obtained. The figure below summarizes the <em>Edit-Assemble-Link-Execute</em> cycle.</p>
+<p>It is typical that the first executable version of your program would have some <strong>runtime errors</strong>. These errors are not detectable by the <em>Assembler tool</em>, but occur when you run your program (e.g. your program may produce wrong results). Therefore, you should <em>debug</em> your program to identify errors at runtime. In this sense, you should run your program with different input values ​​and different operating situations to make sure it runs correctly. In essence, writing a program, whether in assembly or any other language, will require going through a cycle of edit-assemble-link-execute until all errors are ironed out and the correct results are obtained. The figure below summarises the <em>Edit-Assemble-Link-Execute</em> cycle.</p>
 
 <p><img src="/l2ado/static_files/images/Edit-Assemble-Link-Execute_en.png" alt="EALE" class="aligncenter" /></p>
 
@@ -425,7 +425,7 @@ syscall # system call to exit
 
 <p>A program performs inputs and outputs using specific instructions that generate system calls. On a real machine, these calls are managed by the operating system (Windows, macOS, UN*X, etc.). In the MIPS architecture, it is the special instruction (<code class="language-plaintext highlighter-rouge">syscall</code>) that allows generating “system calls”.</p>
 
-<p>Before calling the <code class="language-plaintext highlighter-rouge">syscall</code> instruction, the <code class="language-plaintext highlighter-rouge">$v0</code> register is initialized with the required service number (i.e., the functionality requested from the operating system). In addition, the <code class="language-plaintext highlighter-rouge">$a0</code>–<code class="language-plaintext highlighter-rouge">$a3</code> registers are used to pass any additional arguments to the routine. After issuing the <code class="language-plaintext highlighter-rouge">syscall</code> instruction, any value returned by the operating system is retrieved from the <code class="language-plaintext highlighter-rouge">$v0</code> register.</p>
+<p>Before calling the <code class="language-plaintext highlighter-rouge">syscall</code> instruction, the <code class="language-plaintext highlighter-rouge">$v0</code> register is initialised with the required service number (i.e., the functionality requested from the operating system). In addition, the <code class="language-plaintext highlighter-rouge">$a0</code>–<code class="language-plaintext highlighter-rouge">$a3</code> registers are used to pass any additional arguments to the routine. After issuing the <code class="language-plaintext highlighter-rouge">syscall</code> instruction, any value returned by the operating system is retrieved from the <code class="language-plaintext highlighter-rouge">$v0</code> register.</p>
 
 <p>System call handling routines are specific to the operating system. On MARS, which is a simulator and not a real system, there is no operating system involved. Hence, it is the MARS simulator that provides system services to programs by handling the initiated system calls. The following table shows a small set of services provided by MARS for basic input/output operations.</p>
 
@@ -643,7 +643,7 @@ next:
 
 <h1 id="a-step-by-step-from-c-to-mips">A step-by-step from C to MIPS</h1>
 
-<p>In order to better understand the ideas and rules discussed above, we will walk through the translation of a C text code to a MIPS program. The example below in C language prints the nth Fibonacci number.</p>
+<p>In order to better understand the ideas and rules discussed above, we will walk through the translation of a C text code to a MIPS program. The example below in C prints the n<sup>th</sup> Fibonacci number.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
@@ -663,7 +663,7 @@ next:
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>We are going to translate this program step by step. First, we need to rewrite the C source code into an “<a href="/l2ado/docs/en/non_structured_programming"> unstructured </a>”  program.</p>
+<p>We are going to translate this program step by step. First, we need to rewrite the C source code into an “<a href="/l2ado/docs/en/non_structured_programming"> unstructured </a>” form.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
@@ -689,7 +689,7 @@ next:
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Next, we need to define the global variable <code class="language-plaintext highlighter-rouge">n</code>. In MIPS, global variables are declared under the <code class="language-plaintext highlighter-rouge">.data</code> directive which represents the data segment. the declaration under MIPS looks like this:</p>
+<p>Next, we need to define the global variable <code class="language-plaintext highlighter-rouge">n</code>. In MIPS, global variables are “declared” under the <code class="language-plaintext highlighter-rouge">.data</code> directive which represents the data segment in memory. In MIPS, it looks like this:</p>
 
 <pre><code class="language-mips">.data
 n: .word 9
@@ -697,11 +697,11 @@ n: .word 9
 
 <ul>
   <li>The label <code class="language-plaintext highlighter-rouge">n</code> is chosen to mimic the <em>variable name</em> in C. We could choose any other name for the label as long as we keep track of the association between the variable name in C and the defined label in MIPS.</li>
-  <li><code class="language-plaintext highlighter-rouge">.word</code> allocates a 32-bit space pointed to by the label we just defined (i.e. n),</li>
+  <li>since <code class="language-plaintext highlighter-rouge">n</code> is an integer in <code class="language-plaintext highlighter-rouge">C</code> (i.e. its size is 32 bits), we use <code class="language-plaintext highlighter-rouge">.word</code> to allocates a 32-bit datom. this space is pointed to by the label we just defined (i.e. n).</li>
   <li><code class="language-plaintext highlighter-rouge">9</code> is the value stored in the allocated space (this is the value assigned to the variable <code class="language-plaintext highlighter-rouge">n</code> in C).</li>
 </ul>
 
-<p>Now, we need to declare and initialise <code class="language-plaintext highlighter-rouge">curr_fib</code> and <code class="language-plaintext highlighter-rouge">next_fib</code>. Since these are local variables in our C code, we will simply associate some registers to them. By convention, registers <code class="language-plaintext highlighter-rouge">$s0</code> – <code class="language-plaintext highlighter-rouge">$s7</code> are used for local variables in MIPS.</p>
+<p>Now, we need to “declare” and initialise <code class="language-plaintext highlighter-rouge">curr_fib</code> and <code class="language-plaintext highlighter-rouge">next_fib</code>. Since these are local variables in this C code, we will simply associate some registers to them. By convention, registers <code class="language-plaintext highlighter-rouge">$s0</code> – <code class="language-plaintext highlighter-rouge">$s7</code> are used for local variables in MIPS.</p>
 
 <pre><code class="language-mips">.text
 main:
@@ -710,8 +710,8 @@ main:
 </code></pre>
 <ul>
   <li>We added the <code class="language-plaintext highlighter-rouge">.text</code> directive here. Any instruction under this directive belongs to the <em>executable code</em>.</li>
-  <li>Recall that register $0 is immutable. It always contains the value 0.</li>
-  <li>The local variable <code class="language-plaintext highlighter-rouge">new_fib</code> is not declared (we try not to declare variables in assembly when we can associate registers to them. Can you tell why?).</li>
+  <li>Recall that register <code class="language-plaintext highlighter-rouge">$0</code> is immutable. I.e. it always contains the value <code class="language-plaintext highlighter-rouge">0</code>.</li>
+  <li>The local variable <code class="language-plaintext highlighter-rouge">new_fib</code> is not “declared” here (we try not to declare variables in assembly when we can associate registers to them. Can you tell why?).</li>
 </ul>
 
 <p>Let’s move on to the loop and start by initialising the iteration variable. The following code sets <code class="language-plaintext highlighter-rouge">i</code> to the value of <code class="language-plaintext highlighter-rouge">n</code>.</p>
@@ -722,15 +722,15 @@ main:
 
 <p>The <code class="language-plaintext highlighter-rouge">la</code> instruction loads the address associated with the label (here, <code class="language-plaintext highlighter-rouge">n</code>) into a register (here, <code class="language-plaintext highlighter-rouge">$t0</code>). The first line basically defines <code class="language-plaintext highlighter-rouge">$t0</code> to be a pointer to <code class="language-plaintext highlighter-rouge">n</code>. the second line uses <code class="language-plaintext highlighter-rouge">lw</code> to dereference <code class="language-plaintext highlighter-rouge">$t0</code> and sets this register to the value stored in <code class="language-plaintext highlighter-rouge">n</code>.</p>
 
-<p>In C language, the MIPS instructions above look like this</p>
+<p>In C, the MIPS instructions above look like this</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">t0</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">;</span>    <span class="c1">// you may get errors and warnings when compiling this in C, but</span>
  <span class="n">t0</span> <span class="o">=</span> <span class="o">*</span><span class="n">t0</span><span class="p">;</span>   <span class="c1">// can be fixed with the right type casting and some parenthesis</span>
 </code></pre></div></div>
 
-<p>You’re probably thinking: “Why can’t we directly set <code class="language-plaintext highlighter-rouge">$t0</code> to <code class="language-plaintext highlighter-rouge">n</code>?” In the <code class="language-plaintext highlighter-rouge">.text</code> section of the code, there is no way to directly access <code class="language-plaintext highlighter-rouge">n</code> which is in the <code class="language-plaintext highlighter-rouge">.data</code> section (We cannot write <code class="language-plaintext highlighter-rouge">add $t0, n, $0 </code> because the arguments of the <code class="language-plaintext highlighter-rouge">add</code> instruction <strong>must be registers</strong> and <code class="language-plaintext highlighter-rouge">n</code> <strong>IS NOT</strong> a register). The only way to access <code class="language-plaintext highlighter-rouge">n</code> is to get its address with the <code class="language-plaintext highlighter-rouge">la</code> instruction. Once the address of <code class="language-plaintext highlighter-rouge">n</code> is known, we can get its content (with <code class="language-plaintext highlighter-rouge">lw</code> since <code class="language-plaintext highlighter-rouge">n</code> is a 32-bit value). Recall that <code class="language-plaintext highlighter-rouge">lw</code> assigns to register <code class="language-plaintext highlighter-rouge">rt</code> (<code class="language-plaintext highlighter-rouge">$t0</code>, in our case) the data content stored at memory address <code class="language-plaintext highlighter-rouge">Imm + rs</code> (i.e. <code class="language-plaintext highlighter-rouge">rt = MEM[Imm + rs]</code>).</p>
+<p>You’re probably thinking: “Why can’t we directly set <code class="language-plaintext highlighter-rouge">$t0</code> to <code class="language-plaintext highlighter-rouge">n</code>?” In the <code class="language-plaintext highlighter-rouge">.text</code> section of the code, there is no way to directly access <code class="language-plaintext highlighter-rouge">n</code> which is in the <code class="language-plaintext highlighter-rouge">.data</code> section (We cannot write <code class="language-plaintext highlighter-rouge">add $t0, n, $0</code> because the arguments of the <code class="language-plaintext highlighter-rouge">add</code> instruction <strong>must be registers</strong> and <code class="language-plaintext highlighter-rouge">n</code> <strong>IS NOT</strong> a register). The only way to access <code class="language-plaintext highlighter-rouge">n</code> is to get its address with the <code class="language-plaintext highlighter-rouge">la</code> instruction. Once the address of <code class="language-plaintext highlighter-rouge">n</code> is stored in a register (here, <code class="language-plaintext highlighter-rouge">$t0</code>) , we can get the value it points to using the <code class="language-plaintext highlighter-rouge">lw</code> instruction (since <code class="language-plaintext highlighter-rouge">n</code> points to a 32-bit value). Recall that <code class="language-plaintext highlighter-rouge">lw</code> assigns to register <code class="language-plaintext highlighter-rouge">rt</code> the data content stored at memory address <code class="language-plaintext highlighter-rouge">Imm + rs</code> (i.e. <code class="language-plaintext highlighter-rouge">lw rt, Imm(rs)  -&gt;  rt = MEM[Imm + rs]</code>).</p>
 
-<p>Let’s move on to the loop and begin by implementing the code for the iteration:</p>
+<p>Let’s now move to the loop and begin by implementing the iteration part:</p>
 
 <pre><code class="language-mips">WHILE:
     beq $t0, $0, ELIHW  # exit the loop once we have completed n iterations
@@ -770,9 +770,9 @@ ELIHW:
 ELIHW:
 </code></pre>
 
-<p>Nothing special here, the corresponding C lines are indicated in the comments.</p>
+<p>Nothing special here, the corresponding C lines are shown in the comments.</p>
 
-<p>Let’s move on to displaying the nth Fibonacci number! Recall that displaying data on the console (i.e. <code class="language-plaintext highlighter-rouge">printf("...");</code> and the like) are system calls managed by the operating system! Therefore, we will use the special “<code class="language-plaintext highlighter-rouge">syscall</code>” instruction. And since we want to print an integer (i.e. the value of <code class="language-plaintext highlighter-rouge">curr_fib</code> stored in <code class="language-plaintext highlighter-rouge">$s0</code>), we need to set <code class="language-plaintext highlighter-rouge">$v0</code> to <code class="language-plaintext highlighter-rouge">1</code> and copy the integer value into <code class="language-plaintext highlighter-rouge">$a0</code>.</p>
+<p>Now, the printing part of the n<sup>th</sup> Fibonacci number! Recall that displaying data on the console (i.e. <code class="language-plaintext highlighter-rouge">printf("...");</code> and the like) are system calls managed by the operating system! Therefore, we will use the special “<code class="language-plaintext highlighter-rouge">syscall</code>” instruction. And since we want to print an integer (i.e. the value of <code class="language-plaintext highlighter-rouge">curr_fib</code> stored in <code class="language-plaintext highlighter-rouge">$s0</code>), we need to set <code class="language-plaintext highlighter-rouge">$v0</code> to <code class="language-plaintext highlighter-rouge">1</code> and copy the integer value into <code class="language-plaintext highlighter-rouge">$a0</code>.</p>
 
 <pre><code class="language-mips">ELIHW:
     addi $v0,  $0, 1    # $v0 = service number for 'print an integer' 
@@ -784,7 +784,7 @@ ELIHW:
 In C, we are used to call functions like "`printf("%d\n", curr_fib);`". In MIPS we cannot call functions (nor pass arguments to them) this way. To pass arguments to a function, we must place them in the argument registers (i.e. `$a0`-`$a3`). When the function is called, it will retrieve any needed arguments from these registers. The first argument must be placed in `$a0`, the second in `$a1`, and so on. See [this link](/l2ado/static_files/docs/MIPS_Calling_Convention.html) for more details on calling functions in MIPS.
 -->
 
-<p>Finally, let’s terminate and exit our program! This also requires a <code class="language-plaintext highlighter-rouge">syscall</code>!</p>
+<p>Finally, the program terminates and exits! This also requires a <code class="language-plaintext highlighter-rouge">syscall</code>!</p>
 
 <pre><code class="language-mips">    addi $v0, $0, 10    # service number for 'exit'
     syscall             # system call to terminate the execution of the program
