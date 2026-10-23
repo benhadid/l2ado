@@ -697,7 +697,7 @@ n: .word 9
 
 <ul>
   <li>The label <code class="language-plaintext highlighter-rouge">n</code> is chosen to mimic the <em>variable name</em> in C. We could choose any other name for the label as long as we keep track of the association between the variable name in C and the defined label in MIPS.</li>
-  <li>since <code class="language-plaintext highlighter-rouge">n</code> is an integer in <code class="language-plaintext highlighter-rouge">C</code> (i.e. its size is 32 bits), we use <code class="language-plaintext highlighter-rouge">.word</code> to allocates a 32-bit datom. this space is pointed to by the label we just defined (i.e. n).</li>
+  <li>since <code class="language-plaintext highlighter-rouge">n</code> is an integer in <code class="language-plaintext highlighter-rouge">C</code> (i.e. its size is 32 bits), we use <code class="language-plaintext highlighter-rouge">.word</code> to allocate a 32-bit space. This data is pointed to by the label we just defined (i.e. n).</li>
   <li><code class="language-plaintext highlighter-rouge">9</code> is the value stored in the allocated space (this is the value assigned to the variable <code class="language-plaintext highlighter-rouge">n</code> in C).</li>
 </ul>
 
