@@ -720,7 +720,7 @@ main:
     lw $t0, 0($t0)      # load in $t0 the value stored at the address defined by the label n. $t0 is now our variable i.
 </code></pre>
 
-<p>The <code class="language-plaintext highlighter-rouge">la</code> instruction loads the address associated with the label (here, <code class="language-plaintext highlighter-rouge">n</code>) into a register (here, <code class="language-plaintext highlighter-rouge">$t0</code>). The first line basically defines <code class="language-plaintext highlighter-rouge">$t0</code> to be a pointer to <code class="language-plaintext highlighter-rouge">n</code>. the second line uses <code class="language-plaintext highlighter-rouge">lw</code> to dereference <code class="language-plaintext highlighter-rouge">$t0</code> and sets this register to the value stored in <code class="language-plaintext highlighter-rouge">n</code>.</p>
+<p>The <code class="language-plaintext highlighter-rouge">la</code> instruction loads the address associated with the label (here, <code class="language-plaintext highlighter-rouge">n</code>) into a register (here, <code class="language-plaintext highlighter-rouge">$t0</code>). The first line basically defines <code class="language-plaintext highlighter-rouge">$t0</code> to be a pointer to <code class="language-plaintext highlighter-rouge">n</code>. the second line uses <code class="language-plaintext highlighter-rouge">lw</code> to dereference <code class="language-plaintext highlighter-rouge">$t0</code> and sets this same register to the value stored in <code class="language-plaintext highlighter-rouge">n</code>.</p>
 
 <p>In C, the MIPS instructions above look like this</p>
 
