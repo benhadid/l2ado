@@ -2,13 +2,14 @@
 source:
     .word   3, 1, 4, 1, 5, 9, 0
 dest:
-    .word   0, 0, 0, 0, 0, 0, 0, 0, 0, 0   # alternativement, nous pouvons mettre :   .space  40    # ( 10 x 4 octets )
+    .word   0, 0, 0, 0, 0, 0, 0, 0, 0, 0   # alternatively, one could also put:   .space  40    # ( 10 x 4 bytes ) 
 
 .text
 fun:
     addi $t0, $a0, 1    # $t0 = x + 1
     sub  $t1, $0, $a0   # $t1 = -x
-    mul  $v0, $t0, $t1  # $v0 = (x + 1) * (-x)
+    mult $t0, $t1       # $LO = (x + 1) * (-x)
+    mflo $v0            # $v0 = $LO
     jr $ra              # retour à l'appelant
 
 main:
