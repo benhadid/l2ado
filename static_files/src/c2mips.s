@@ -10,7 +10,7 @@ fun:
     sub  $t1, $0, $a0   # $t1 = -x
     mult $t0, $t1       # $LO = (x + 1) * (-x)
     mflo $v0            # $v0 = $LO
-    jr $ra              # retour à l'appelant
+    jr $ra              # return to caller function
 
 main:
     # BEGIN PROLOGUE
@@ -51,9 +51,10 @@ WHILE:
     j WHILE                 
 
 ELIHW:
-    addi $v0, $0,  1    # argument de syscall, 1 = exécuter 'print entier'
-    addi $a0, $s0, 0    # argument de syscall, la valeur à afficher
-    syscall             # appel système (affichage d'un entier)
+    addi $v0, $0,  1   # syscall service number, 1 = 'print an integer'
+    addi $a0, $s0, 0   # argument to syscall, $a0 = integer to print
+    syscall            # system call (prints an integer)
+
     # BEGIN EPILOGUE
     lw $s0, 0($sp)
     lw $s1, 4($sp)
@@ -62,6 +63,8 @@ ELIHW:
     lw $ra, 16($sp)
     addi $sp, $sp, 20
     # END EPILOGUE    
-    addi $v0, $0, 10    # argument de syscall, 10 = terminer le programme
-    syscall             # appel système (terminer le programme)
+
+    addi $v0, $0, 10    # syscall service number, 10 = program exit 
+    syscall             # system call (exit the program)
+
 
