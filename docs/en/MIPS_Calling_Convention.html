@@ -695,7 +695,7 @@ fun:
     addi $t0, $a0, 1    # $t0 = x + 1
     sub  $t1, $0, $a0   # $t1 = -x
     mult $t0, $t1       # $LO = (x + 1) * (-x)
-    mflo $v0            $ v0  = $LO
+    mflo $v0            # $v0 = $LO
     jr $ra              # return to the caller
 </code></pre>
 
@@ -914,6 +914,7 @@ ELIHW:
 
 
 
+
 </code></pre></div>    </div>
 
   </div>
@@ -932,9 +933,10 @@ ELIHW:
    9     jal  fact           # recursive call. I.e. fact(n-1)
   10     lw   $a0, 0($sp)    # restore $a0 = n from the stack
   11     lw   $ra, 4($sp)    # restore the returning address
-  12     mul  $v0, $a0, $v0  # put in $v0 = n * fact(n-1)
-  13     addi $sp, $sp, 8    # free the stackframe
-  14     jr   $ra            # return to the caller function
+  12     mult $a0, $v0       # put in $LO = n * fact(n-1)
+  13     mflo $v0            # $v0 = $LO
+  14     addi $sp, $sp, 8    # free the stackframe
+  15     jr   $ra            # return to the caller function
 </code></pre>
 
   </div>
