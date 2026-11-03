@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title> Functions and Calling Convention in MIPS - Computer Design / Fall 2026 </title>
-  <meta name="description" content="IntroductionA function is an algorithmic concept used to structure programs to make them easier to understand and manipulate. In fact, a function  is a block...">
+  <meta name="description" content="IntroductionA function is an algorithmic concept used to structure programs in order to make them easier to understand and manipulate. In fact, a function  i...">
   
   <!--for gitlab pages -->
   
@@ -169,7 +169,7 @@
   <article class="post-content">
     <h1 id="introduction">Introduction</h1>
 
-<p>A function is an algorithmic concept used to structure programs to make them easier to understand and manipulate. In fact, a function</p>
+<p>A function is an algorithmic concept used to structure programs in order to make them easier to understand and manipulate. In fact, a function</p>
 <ul>
   <li>is a block of instructions that can be called as needed at different points in a program.</li>
   <li>can receive parameters and return results. Parameters and results act as an interface between the function and the rest of the program.</li>
@@ -623,9 +623,9 @@ In our example, <code class="language-plaintext highlighter-rouge">func1</code> 
       
 </fieldset>
 
-<h1 id="from-c-to-mips-functions-calling">From C to MIPS (functions calling)</h1>
+<h1 id="from-c-to-mips-with-calling-convention">From C to MIPS (with calling convention)</h1>
 
-<p>As done <a href="/l2ado/docs/en/MIPS_Assembly_Language"> previously </a>, we will translate the C program below into MIPS. The added difficulty here is that we must follow the MIPS calling convention when writing MIPS code.</p>
+<p>As done <a href="/l2ado/docs/en/MIPS_Assembly_Language">previously</a>, we will translate the C program below into MIPS. The added difficulty here is that we must follow the MIPS calling convention when writing MIPS code.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">source</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
 <span class="kt">int</span> <span class="n">dest</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
@@ -668,13 +668,11 @@ In our example, <code class="language-plaintext highlighter-rouge">func1</code> 
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Now let’s move on to the MIPS conversion and start by defining the <code class="language-plaintext highlighter-rouge">source</code> and <code class="language-plaintext highlighter-rouge">dest</code> arrays. We need to declare our arrays in the <code class="language-plaintext highlighter-rouge">.data</code> section as shown below:</p>
+<p>Now, to MIPS conversion. We start by defining the <code class="language-plaintext highlighter-rouge">source</code> and <code class="language-plaintext highlighter-rouge">dest</code> arrays. We need to “declare” our arrays in the <code class="language-plaintext highlighter-rouge">.data</code> section as shown below:</p>
 
 <pre><code class="language-mips">.data
-source:
-    .word   3, 1, 4, 1, 5, 9, 0
-dest:
-    .word   0, 0, 0, 0, 0, 0, 0, 0, 0, 0   # alternatively, you could also put:   .space  40    # ( 10 x 4 bytes )
+source: .word   3, 1, 4, 1, 5, 9, 0
+dest:   .word   0, 0, 0, 0, 0, 0, 0, 0, 0, 0   # alternatively, you could put:   .space  40    # ( 10 x 4 bytes )
 </code></pre>
 
 <p>Next, we translate the C function:</p>
@@ -686,11 +684,11 @@ dest:
 
 <p>The MIPS calling convention states that</p>
 <ul>
-  <li>The value of <code class="language-plaintext highlighter-rouge">x</code> can be retrieved from register <code class="language-plaintext highlighter-rouge">$a0</code>.</li>
-  <li>The returned value must be put in the register <code class="language-plaintext highlighter-rouge">$v0</code>.</li>
+  <li>The value of <code class="language-plaintext highlighter-rouge">x</code> is expected to be in register <code class="language-plaintext highlighter-rouge">$a0</code>.</li>
+  <li>The returned value must be put in register <code class="language-plaintext highlighter-rouge">$v0</code>.</li>
 </ul>
 
-<p>The MIPS version of <code class="language-plaintext highlighter-rouge">fun()</code> is given below with exhaustive comments.</p>
+<p>The MIPS version of <code class="language-plaintext highlighter-rouge">fun()</code> is given below (see comments).</p>
 
 <pre><code class="language-mips">.text
 fun:
@@ -712,7 +710,7 @@ Why weren’t the contents of <code class="language-plaintext highlighter-rouge"
 </details>
 </fieldset>
 
-<p>Let’s now translate the <code class="language-plaintext highlighter-rouge">main</code> function to MIPS (for the moment, we’ll ignore the MIPS calling convention relative to storing/restoring data from the stack) …</p>
+<p>Let’s now translate the <code class="language-plaintext highlighter-rouge">main</code> function to MIPS (we’ll temporarily ignore the MIPS calling convention relative to storing/restoring data from the stack) …</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -734,7 +732,7 @@ Why weren’t the contents of <code class="language-plaintext highlighter-rouge"
 
 <p>Remember that the <code class="language-plaintext highlighter-rouge">la</code> instruction retrieves the address associated with the label given as a parameter. This is the <strong>only way</strong> to access the <code class="language-plaintext highlighter-rouge">source[]</code> and <code class="language-plaintext highlighter-rouge">dest[]</code> addresses. <code class="language-plaintext highlighter-rouge">$s1</code> is now a pointer to the <code class="language-plaintext highlighter-rouge">source[]</code> array and <code class="language-plaintext highlighter-rouge">$s2</code> is a pointer to the <code class="language-plaintext highlighter-rouge">dest[]</code> array.</p>
 
-<p>Now to translating the loop:</p>
+<p>Now, to translating the loop:</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">WHILE:</span>    
     <span class="k">if</span> <span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">goto</span> <span class="n">ELIHW</span><span class="p">;</span>
@@ -798,7 +796,7 @@ ELIHW:
   <li>Increment the <code class="language-plaintext highlighter-rouge">sum</code> variable by <code class="language-plaintext highlighter-rouge">dest[k]</code>.</li>
 </ol>
 
-<p>Last, to the MIPS implementation of the exit of the <code class="language-plaintext highlighter-rouge">main</code> function (still excluding the MIPS calling convention relative to storing/restoring data from the stack) …</p>
+<p>Last, we code the exit part of the <code class="language-plaintext highlighter-rouge">main</code> function (still not implementing the MIPS calling convention relative to storing/restoring data from the stack) …</p>
 
 <pre><code class="language-mips">ELIHW:
     addi $v0, $0,  1  # syscall service number, 1 = 'print an integer'
@@ -810,9 +808,9 @@ ELIHW:
 
 <p>The content of the <code class="language-plaintext highlighter-rouge">sum</code> variable is stored in the <code class="language-plaintext highlighter-rouge">$s0</code> register. Remember that in order to print this value, we need to put it in <code class="language-plaintext highlighter-rouge">$a0</code> before the first system call (and set service number <code class="language-plaintext highlighter-rouge">1</code> in <code class="language-plaintext highlighter-rouge">$v0</code>).</p>
 
-<p>Now that most of the logic of our program is translated into MIPS, we need to finaliee it by introducing the necessary instructions in order to respect the calling convention for the <code class="language-plaintext highlighter-rouge">main</code> and <code class="language-plaintext highlighter-rouge">fun</code> functions (i.e. adding save/restore instructions on the stack).</p>
+<p>Now that most of the logic of our program is translated into MIPS, we need to introduce the necessary instructions in order to comply with the calling convention for the <code class="language-plaintext highlighter-rouge">main</code> and <code class="language-plaintext highlighter-rouge">fun</code> functions (i.e. adding save/restore instructions on the stack).</p>
 
-<p>First, let’s add the appropriate instructions around <code class="language-plaintext highlighter-rouge">jal fun</code>. We need to save all registers of the <em>caller</em> function (i.e. the <code class="language-plaintext highlighter-rouge">main</code> function) whose values ​​we want to remain the same after calling <code class="language-plaintext highlighter-rouge">fun</code>. In this case, we can see that we are using registers <code class="language-plaintext highlighter-rouge">$t0</code>, <code class="language-plaintext highlighter-rouge">$t1</code>, <code class="language-plaintext highlighter-rouge">$t2</code>, <code class="language-plaintext highlighter-rouge">$t3</code>, <code class="language-plaintext highlighter-rouge">$a0</code> and <code class="language-plaintext highlighter-rouge">$v0</code> in <code class="language-plaintext highlighter-rouge">main</code>.</p>
+<p>First, let’s add the appropriate instructions around <code class="language-plaintext highlighter-rouge">jal fun</code>. We need to save all registers of the <strong>caller</strong> function (i.e. the <code class="language-plaintext highlighter-rouge">main</code> function) whose values ​​we want to remain the same after returning from <code class="language-plaintext highlighter-rouge">fun</code>. In this case, we can see that we are using registers <code class="language-plaintext highlighter-rouge">$t0</code>, <code class="language-plaintext highlighter-rouge">$t1</code>, <code class="language-plaintext highlighter-rouge">$t2</code>, <code class="language-plaintext highlighter-rouge">$t3</code>, <code class="language-plaintext highlighter-rouge">$a0</code> and <code class="language-plaintext highlighter-rouge">$v0</code> in <code class="language-plaintext highlighter-rouge">main</code>.</p>
 
 <fieldset class="checkoff">
  <legend>Check-up</legend>
@@ -835,7 +833,7 @@ lw $t0, 0($sp)
 addi $sp, $sp, 4
 </code></pre>
 
-<p>Now to the prologue and epilogue of the <code class="language-plaintext highlighter-rouge">main</code> function…</p>
+<p>Now, to the prologue and epilogue of the <code class="language-plaintext highlighter-rouge">main</code> function…</p>
 
 <fieldset class="checkoff">
  <legend>Check-up</legend>
@@ -844,7 +842,7 @@ addi $sp, $sp, 4
 What part of the calling convention is missing for the <code class="language-plaintext highlighter-rouge">main</code> function?
 </summary>
 <p style="color: firebrick">
-With respect to the operating system, <code class="language-plaintext highlighter-rouge">main</code> is a callee function… and we are overwriting registers that should be preserved by the callee function! Remember that it is the callee function which should ensure that these registers are kept the same before returning to the caller function.
+With regard to the operating system, <code class="language-plaintext highlighter-rouge">main</code> is a <strong>callee</strong> function… and we are overwriting registers that should be preserved by the callee function! Remember that it is the callee function which should ensure that these registers are kept the same before returning to the caller function.
 </p>
 </details>
 
@@ -853,7 +851,7 @@ With respect to the operating system, <code class="language-plaintext highlighte
 What registers should be preserved by the <code class="language-plaintext highlighter-rouge">main</code> function?
 </summary>
 <p style="color: firebrick">
-All the registers that we overwrite and which must be preserved  by the callee function. For <code class="language-plaintext highlighter-rouge">main</code>, these are the registers <code class="language-plaintext highlighter-rouge">$s0</code>-<code class="language-plaintext highlighter-rouge">$s3</code> and <code class="language-plaintext highlighter-rouge">$ra</code>.
+All registers we overwrite and which must be preserved by the callee function. For <code class="language-plaintext highlighter-rouge">main</code>, these are the registers <code class="language-plaintext highlighter-rouge">$s0</code>-<code class="language-plaintext highlighter-rouge">$s3</code> and <code class="language-plaintext highlighter-rouge">$ra</code>.
 </p>
 </details>
 </fieldset>
